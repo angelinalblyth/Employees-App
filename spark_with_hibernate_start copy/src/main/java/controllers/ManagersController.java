@@ -76,19 +76,23 @@ public class ManagersController {
 
         post("/managers/:id", (req, res) ->{
 
-            String strId = req.params(":id");
+//            String strId = req.params(":id");
+//            Manager manager = DBHelper.find(Integer.parseInt(strId), Manager.class);
+//
+//           Department department = DBHelper.find(Integer.parseInt(req.queryParams("department")), Department.class);
 
-           Department department = DBHelper.find(Integer.parseInt(req.queryParams("department")), Department.class);
+            int managerId = Integer.parseInt(req.params("id"));
+            Manager manager = DBHelper.find(managerId, Manager.class);
 
-            int id = Integer.parseInt(req.queryParams("id"));
+            int departmentId = Integer.parseInt(req.queryParams("department"));
+            Department department = DBHelper.find(departmentId, Department.class);
+
+
             String firstName = req.queryParams("firstName");
             String lastName = req.queryParams("lastName");
             int salary = Integer.parseInt(req.queryParams("salary"));
-            Double budget = Double.parseDouble(req.queryParams("budget"));
+            double budget = Double.parseDouble(req.queryParams("budget"));
 
-            Manager manager = DBHelper.find(Integer.parseInt(strId), Manager.class);
-
-            manager.setId(id);
             manager.setFirstName(firstName);
             manager.setLastName(lastName);
             manager.setSalary(salary);
@@ -101,6 +105,23 @@ public class ManagersController {
             return null;
         }, new VelocityTemplateEngine());
 
+        post("/managers/:id/delete", (req,res) -> {
+            int id = Integer.parseInt(req.queryParams(":id"));
+
+            Manager manager = DBHelper.find(id, Manager.class);
+
+            DBHelper.delete(manager);
+            res.redirect("/managers");
+            return null;
+        }, new VelocityTemplateEngine());
+
+
+//        post("/managers/:id/delete", (req, res) -> {
+//            Manager manager = DBHelper.find(Integer.parseInt(req.params(":id")), Manager.class);
+//            DBHelper.delete(manager);
+//            res.redirect("/managers");
+//            return null;
+//        }, new VelocityTemplateEngine());
 
     }
 }

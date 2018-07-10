@@ -5,6 +5,10 @@
 <p> Department: $manager.getDepartment().getTitle()</p>
 
 
-<a href="/managers/$manager.getId()/edit" class="button center">Edit Manager</a>
+<form class ="show_member_form" method="get" action="/managers/$manager.getId()/edit">
+    <input class ="button center" type="submit" value="Edit Member"/>
+</form>
 
-<a href="/managers/$manager.getId()/delete" class="button center">Delete Manager</a>
+<form class ="show_member_form" method="post" action="/managers/$manager.getId()/delete">
+    <input class ="button center" type="submit" value="Delete Member"/>
+</form>
