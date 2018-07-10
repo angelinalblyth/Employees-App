@@ -105,23 +105,15 @@ public class ManagersController {
             return null;
         }, new VelocityTemplateEngine());
 
-        post("/managers/:id/delete", (req,res) -> {
-            int id = Integer.parseInt(req.queryParams(":id"));
 
+
+        post("/managers/:id/delete", (req, res) -> {
+            int id = Integer.parseInt(req.params("id"));
             Manager manager = DBHelper.find(id, Manager.class);
-
             DBHelper.delete(manager);
             res.redirect("/managers");
             return null;
         }, new VelocityTemplateEngine());
-
-
-//        post("/managers/:id/delete", (req, res) -> {
-//            Manager manager = DBHelper.find(Integer.parseInt(req.params(":id")), Manager.class);
-//            DBHelper.delete(manager);
-//            res.redirect("/managers");
-//            return null;
-//        }, new VelocityTemplateEngine());
 
     }
 }
