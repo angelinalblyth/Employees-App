@@ -1,0 +1,11 @@
+<p> Title: $department.getTitle() </p>
+
+
+
+<form class ="show_member_form" method="get" action="/departments/$department.getId()/edit">
+    <input class ="button center" type="submit" value="Edit Department"/>
+</form>
+
+<form class ="show_member_form" method="post" action="/departments/$department.getId()/delete">
+    <input class ="button center" type="submit" value="Delete Department"/>
+</form>

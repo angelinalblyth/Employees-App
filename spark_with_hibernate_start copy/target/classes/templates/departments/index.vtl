@@ -1,7 +1,7 @@
 <p class="pageHeader">List of all Departments</p>
 
 <div>
-    <a href ="/department/new" class="button center">New Department</a>
+    <a href ="/departments/new" class="button center">New Department</a>
 </div>
 
 <div class="container">
@@ -13,6 +13,9 @@
         #foreach ($department  in $departments)
         <tr>
             <td>$department.getTitle()</td>
+            <td>
+                <a href="/departments/$department.getId()" class="button center">View Department</a>
+            </td>
         </tr>
         #end
     </table>

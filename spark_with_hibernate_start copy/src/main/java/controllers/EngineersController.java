@@ -63,8 +63,12 @@ public class EngineersController {
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
-//        get("/engineers/:id/edit", (req, res) ->{
-//
-//        });
+        post("/engineers/:id/delete", (req, res) -> {
+            int id = Integer.parseInt(req.params("id"));
+            Engineer engineer = DBHelper.find(id, Engineer.class);
+            DBHelper.delete(engineer);
+            res.redirect("/engineers");
+            return null;
+        }, new VelocityTemplateEngine());
     }
 }
