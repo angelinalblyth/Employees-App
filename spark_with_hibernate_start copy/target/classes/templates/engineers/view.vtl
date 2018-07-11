@@ -2,3 +2,11 @@
 <p> Last Name: $engineer.getLastName() </p>
 <p> Salary: $engineer.getSalary() </p>
 <p> Department: $engineer.getDepartment().getTitle()</p>
+
+<form class ="show_member_form" method="get" action="/engineers/$engineer.getId()/edit">
+    <input class ="button center" type="submit" value="Edit Engineer"/>
+</form>
+
+<form class ="show_member_form" method="post" action="/engineers/$engineer.getId()/delete">
+    <input class ="button center" type="submit" value="Delete Engineer"/>
+</form>
