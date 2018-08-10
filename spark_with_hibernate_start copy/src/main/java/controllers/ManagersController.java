@@ -56,9 +56,9 @@ public class ManagersController {
 
         get("/managers/:id", (req,res) ->{
             String strId = req.params(":id");
-            Manager managers = DBHelper.find(Integer.parseInt(strId), Manager.class);
+            Manager manager = DBHelper.find(Integer.parseInt(strId), Manager.class);
             HashMap<String, Object> model = new HashMap<>();
-            model.put("manager", managers);
+            model.put("manager", manager);
             model.put("template", "templates/managers/view.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
@@ -76,13 +76,9 @@ public class ManagersController {
 
         post("/managers/:id", (req, res) ->{
 
-//            String strId = req.params(":id");
-//            Manager manager = DBHelper.find(Integer.parseInt(strId), Manager.class);
-//
-//           Department department = DBHelper.find(Integer.parseInt(req.queryParams("department")), Department.class);
+           String strId = req.params(":id");
+            Manager manager = DBHelper.find(Integer.parseInt(strId), Manager.class);
 
-            int managerId = Integer.parseInt(req.params("id"));
-            Manager manager = DBHelper.find(managerId, Manager.class);
 
             int departmentId = Integer.parseInt(req.queryParams("department"));
             Department department = DBHelper.find(departmentId, Department.class);
